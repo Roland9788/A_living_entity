@@ -1,0 +1,271 @@
+#include <iostream>
+using namespace std;
+
+struct Characteristic
+{
+	int IQ;
+	float Flightspeed;
+	bool Artiodactyl;
+};
+
+struct Entity
+{
+	char Type[10];
+	char color[20];
+	Characteristic Xarakteristika[10];
+	int Movementspeed;
+};
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	const int N = 3; //Кол-во живых сущностей
+	Entity Alivingentity[N];
+	char type1[6] = "Human";
+	char type2[5] = "Bird";
+	char type3[7] = "Cattel";
+	bool flag1 = false;
+	bool flag2 = false;
+	bool flag3 = false;
+	bool flag  = false;
+	for (int i = 0; i < N; i++)
+	{
+		cout << "\nВведите тип сущности человек-Human,птица-Bird,скот-Cattel\n";
+		cin >> Alivingentity[i].Type;
+
+		for (int k = 0; k < 6; k++)
+		{
+			if (Alivingentity[i].Type[k] == type1[k])
+			{
+				flag1 = true;
+			}
+			else
+			{
+				flag1 = false;
+				break;
+			}
+		}
+
+			for (int k = 0; k < 5; k++)
+			{
+				if (Alivingentity[i].Type[k] == type2[k])
+				{
+					flag2 = true;
+				}
+				else
+				{
+					flag2 = false;
+					break;
+				}
+			}
+			for (int k = 0; k < 7; k++)
+			{
+				if (Alivingentity[i].Type[k] == type3[k])
+				{
+					flag3 = true;
+				}
+				else
+				{
+					flag3 = false;
+					break;
+				}
+			}
+			if (flag1 == true)
+			{
+				cout << "\nВведите цвет кожи человека\n";
+				cin >> Alivingentity[i].color;
+				cout << "\nВведите скорость передвежения человека(цыфру,м/ч)\n";
+				cin >> Alivingentity[i].Movementspeed;
+				cout << "\nВведите характеристику человека IQ\n";
+				cin >> Alivingentity[i].Xarakteristika[i].IQ;
+
+
+				cout << "\n";
+
+
+				cout << "\nЦвет кожи человека: ";
+				cout << Alivingentity[i].color;
+				cout << "\nCкорость передвежения человека: ";
+				cout << Alivingentity[i].Movementspeed;
+				cout << "\nIQ человека: ";
+				cout << Alivingentity[i].Xarakteristika[i].IQ;
+			}
+
+			if (flag2 == true)
+			{
+				cout << "\nВведите цвет оперения птицы\n";
+				cin >> Alivingentity[i].color;
+				cout << "\nВведите скорость передвежения птицы(цыфру,м/ч)\n";
+				cin >> Alivingentity[i].Movementspeed;
+				cout << "\nВведите характеристику пциты скорость её полета(км/ч)\n";
+				cin >> Alivingentity[i].Xarakteristika[i].Flightspeed;
+
+				cout << "\n";
+
+				cout << "\nЦвет оперения птицы: ";
+				cout << Alivingentity[i].color;
+				cout << "\nСкорость передвежения птицы(цыфру,м/ч): ";
+				cout << Alivingentity[i].Movementspeed;
+				cout << "\nXарактеристика пциты скорость её полета(км/ч): ";
+				cout << Alivingentity[i].Xarakteristika[i].Flightspeed;
+			}
+
+			if (flag3 == true)
+			{
+				cout << "\nВведите цвет оперения,шерсти скота\n";
+				cin >> Alivingentity[i].color;
+				cout << "\nВведите скорость передвежения скота(цыфру,км/ч)\n";
+				cin >> Alivingentity[i].Movementspeed;
+				cout << "\nВведите характеристику скота парнкопытное (1-да/0-нет)\n";
+				cin >> Alivingentity[i].Xarakteristika[i].Artiodactyl;
+
+				cout << "\n";
+
+				cout << "\nЦвет оперения,шерсти скота: ";
+				cout << Alivingentity[i].color;
+				cout << "\nСкорость передвежения скота(цыфру,км/ч): ";
+				cout << Alivingentity[i].Movementspeed;
+				cout << "\nXарактеристика скота парнкопытное:";
+				if (Alivingentity[i].Xarakteristika[i].Artiodactyl == 1)
+				{
+					cout << "Да";
+				}
+				if (Alivingentity[i].Xarakteristika[i].Artiodactyl == 0)
+				{
+					cout << "Нет";
+				}
+			}
+	}
+	int x = 0;
+	Entity searchAlivingentity[N];
+	do
+	{
+
+
+		cout << "\nВведите 1 что бы найти существо по характеристике.  0-что бы закончить работу программы\n";
+		cin >> x;
+		char y[10];
+		bool t1 = false;
+		bool t2 = false;
+		bool t3 = false;
+		bool t = false;
+		if (x == 1)
+		{
+			cout << "\nПоиск существа\n";
+			for (int i = 0; i < N; i++)
+			{
+				cout << "\nВведите скорость передвижения  существа: \n";
+				cin >> searchAlivingentity[i].Movementspeed;
+				cout << "\nВведите цвет существа: \n";
+				cin >> searchAlivingentity[i].color;
+				for (int j = 0; j < N; j++)
+				{
+					for (int k = 0; k < 20; k++)
+					{
+						if (searchAlivingentity[i].Movementspeed == Alivingentity[j].Movementspeed && searchAlivingentity[i].color[k] == Alivingentity[j].color[k])
+						{
+							t = true;
+						}
+						else
+						{
+							t = false;
+							break;
+						}
+					}
+						if (t == true)
+						{
+							cout << "\nВведите характеристику существа у человека IQ целое число, у птицы скорость полёта (число с точкой),Партнокопытное или нет вводить(Y/N): ";
+							cin >> y;
+								for (int h = 0; h < 10; h++)
+								{
+									if ((57 > static_cast<int>(y[h])) && (static_cast<int>(y[h]) > 48))
+									{
+										t1 = true;
+
+									}
+
+									if (static_cast<int>(y[h]) == 89)
+									{
+										Alivingentity[i].Xarakteristika[i].Artiodactyl = 1;
+										t2 = true;
+									}
+
+									if (static_cast<int>(y[h]) == 78)
+									{
+										Alivingentity[i].Xarakteristika[i].Artiodactyl = 0;
+										t2 = true;
+									}
+
+									if (static_cast<int>(y[h]) == 46)
+									{
+										t3 = true;
+										t1 = false;
+										break;
+									}
+								}
+								for (int i = 0; i < N; i++)
+								{
+
+
+									if ((t1 == true) && (Alivingentity[i].Type[0] == 'H'))
+									{
+										cout << "\nСущество: ";
+										cout << Alivingentity[i].Type;
+										cout << "\nСкорость передвижения: ";
+										cout << Alivingentity[i].Movementspeed;
+										cout << "\nЦвет кожи: ";
+										cout << Alivingentity[i].color;
+										cout << "\nIQ человека: ";
+										cout << Alivingentity[i].Xarakteristika[i].IQ;
+										break;
+									}
+
+									if ((t2 == true) && (Alivingentity[i].Type[0] == 'C'))
+									{
+										cout << "\nСущество: ";
+										cout << Alivingentity[i].Type;
+										cout << "\nСкорость передвижения: ";
+										cout << Alivingentity[i].Movementspeed;
+										cout << "\nЦвет оперения,шерсти: ";
+										cout << Alivingentity[i].color;
+										cout << "\nПранокопытное: ";
+										if (Alivingentity[i].Xarakteristika[i].Artiodactyl == 1)
+										{
+											cout << "Да";
+										}
+										if (Alivingentity[i].Xarakteristika[i].Artiodactyl == 0)
+										{
+											cout << "Нет";
+										}
+										break;
+									}
+
+									if ((t3 == true) && (Alivingentity[i].Type[0] == 'B'))
+									{
+										cout << "\nСущество: ";
+										cout << Alivingentity[i].Type;
+										cout << "\nСкорость передвижения: ";
+										cout << Alivingentity[i].Movementspeed;
+										cout << "\nЦвет оперения: ";
+										cout << Alivingentity[i].color;
+										cout << "\nСкорость полета птицы: ";
+										cout << Alivingentity[i].Xarakteristika[i].Flightspeed;
+										break;
+									}
+								}
+							break;
+						}
+					
+				}
+				break;
+			}
+		}
+
+	}while (x != 0);
+
+
+
+
+
+	return 0;
+}
